@@ -1,0 +1,19 @@
+[project]
+name = "test-bad-index"
+version = "0.1.0"
+description = "Test with invalid PyPI index"
+requires-python = ">=3.10"
+dependencies = [
+    "requests>=2.31.0",
+]
+
+[[tool.uv.index]]
+name = "invalid"
+url = "https://nonexistent.pypi.index.example.com/simple"
+
+[tool.uv.sources]
+requests = { index = "invalid" }
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
